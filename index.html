@@ -1,20 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap" rel="stylesheet">
-</head>
-<body>
-    <h1>BOMBERMAN</h1>
-    <div id="playground">
-        <div id="player"></div>
-    </div>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <section id="bomberman_game">
+        <div id="playground">
+          <div id="player"></div>
+        </div>
+      </section>
+
+      <section id="player_choice">
+        <div id="game_title">
+            <h1>BOMBERMAN</h1>
+            <p>Version Genshin Impact</p>
+        </div>
+        
+        <div id="player_caracter_choice">
+          <p>Choose your caracter :</p>
+          <ul id="player_caracter_choice_list">
+            <li>
+              <button>
+                <img
+                  src="images/klee.png"
+                  alt="Personnage Genshin Impact Klee"
+                />
+              </button>
+            </li>
+            <li>
+              <button>
+                <img
+                  src="images/thoma.png"
+                  alt="Personnage Genshin Impact Thoma"
+                />
+              </button>
+            </li>
+            <li>
+              <button>
+                <img
+                  src="images/ganyu.png"
+                  alt="Personnage Genshin Impact Ganyu"
+                />
+              </button>
+            </li>
+            <li>
+              <button>
+                <img
+                  src="images/xiao.png"
+                  alt="Personnage Genshin Impact Xiao"
+                />
+              </button>
+            </li>
+            <li>
+              <button>
+                <img
+                  src="images/sayu.png"
+                  alt="Personnage Genshin Impact Sayu"
+                />
+              </button>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
