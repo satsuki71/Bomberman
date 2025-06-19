@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+h1 {
+    font-family: "Ceviche One", system-ui;
+    font-size: 64px;
+    text-align: center;
+    color: lightskyblue;
+    margin-bottom: 30px;
+}
+
+#playground {
+    width: 735px;
+    height: 735px;
+    border: 10px solid skyblue;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(21, 34px);
+    grid-template-rows: repeat(21, 34px);
+    gap: 1px;
+    background-color: black;
+    position: relative;
+}
+
+.cell {
+  width: 34px;
+  height: 34px;
+  background-color: rgb(167, 167, 167); /* sol */
+  align-items: center;
+}
+
+.wall {
+  background-color: #232323; /* murs solides */
+}
+
+#player {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 34px;
+    height: 34px;
+    background-color: rgb(167, 167, 167);
+    background-image: url("images/player.png");
+    background-size: cover;
+    z-index: 10;
+}
