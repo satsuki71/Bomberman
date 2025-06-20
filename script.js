@@ -12,7 +12,7 @@ for (let y = 0; y < rows; y++) {
     // Murs fixes aux positions paires (x et y tous les deux pairs)
     if (x % 3 === 1 && y % 3 === 1) {
         cell.classList.add("wall");
-        positionFixed.push({ x, y }); // ← Ajout ici
+        positionFixed.push({ x, y }); // Ajout ici
       }      
 
     container.appendChild(cell);
@@ -71,8 +71,62 @@ function updatePlayerPosition() {
       y = newY;
       updatePlayerPosition();
     }
+
+    if (e.code === "Space") {
+        placeBomb(x,y);
+    }
   });
 
-//Poser des bombes quand appuie sur espace :
-// Si appuie sur espace => image bombe puis après 1s exlose et cube revient à état cell sauf si wall
+//Placement de la bombe
+let activeBombs = 0;
+const maxBombs = 3;
 
+function placeBomb(bombX, bombY) {
+  if (activeBombs >= maxBombs) return; // Limite de bombes posées
+  activeBombs++;
+
+  const bomb = document.createElement("div");
+  bomb.classList.add("bomb");
+  bomb.style.left = `${bombX * (cellSize + 1)}px`;
+  bomb.style.top = `${bombY * (cellSize + 1)}px`;
+  container.appendChild(bomb);
+
+  setTimeout(() => {
+    bomb.remove();
+
+    // Explosion visuelle
+    createExplosion(bombX, bombY);
+
+    activeBombs--;
+  }, 2000);
+}
+
+//Explosion
+function createExplosion(centerX, centerY) {
+    const directions = [
+      { dx: 0, dy: 0 },    // Centre
+      { dx: -1, dy: 0 },   // Gauche
+      { dx: 1, dy: 0 },    // Droite
+      { dx: 0, dy: -1 },   // Haut
+      { dx: 0, dy: 1 },    // Bas
+      { dx: -1, dy: -1 },  // Haut-gauche
+      { dx: 1, dy: -1 },   // Haut-droite
+      { dx: -1, dy: 1 },   // Bas-gauche
+      { dx: 1, dy: 1 },    // Bas-droite
+    ];
+  
+    directions.forEach(({ dx, dy }) => {
+      const explosion = document.createElement("div");
+      explosion.classList.add("explosion");
+      explosion.style.left = `${(centerX + dx) * (cellSize + 1)}px`;
+      explosion.style.top = `${(centerY + dy) * (cellSize + 1)}px`;
+      container.appendChild(explosion);
+  
+      // Retirer l'explosion après animation
+      setTimeout(() => {
+        explosion.remove();
+      }, 500);
+    });
+  }
+  
+  

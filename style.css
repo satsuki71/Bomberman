@@ -98,6 +98,7 @@ main {
     gap: 1px;
     background-color: black;
     position: relative;
+    overflow: hidden;
 }
 
 .cell {
@@ -125,3 +126,39 @@ main {
     z-index: 10;
     transition: 0.3s linear;
 }
+
+.bomb {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background-color: red; /* ou une image si tu préfères */
+    border-radius: 50%;
+    z-index: 12;
+}
+
+.explosion {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background-color: rgb(255, 106, 0);
+    border-radius: 4px;
+    opacity: 0.8;
+    z-index: 11;
+    animation: explode 0.5s ease-out;
+  }
+  
+  @keyframes explode {
+    0% {
+      transform: scale(0.5);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+  
