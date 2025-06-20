@@ -193,3 +193,52 @@ main {
     background-size: cover;
   }
   
+  /* Masque la modale au début */
+  .hidden {
+    display: none !important;
+  }
+  
+  
+  /* Fond semi-transparent couvrant tout l'écran */
+  #gameModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  /* Contenu centré de la modale */
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px black;
+    font-family: 'Ceviche One', cursive;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  .modal-content button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #2980b9;
+  }
+  

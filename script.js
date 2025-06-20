@@ -65,8 +65,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-//Changement de personnage
-// Sélectionne tous les boutons des personnages
+// Changement de personnage
 const buttons = document.querySelectorAll("#player_caracter_choice_list button");
 
 buttons.forEach((button) => {
@@ -77,7 +76,6 @@ buttons.forEach((button) => {
     player.style.backgroundImage = `url(${imgSrc})`;
   });
 });
-
 
 // --- Bombes ---
 let activeBombs = 0;
@@ -98,6 +96,26 @@ function placeBomb(bombX, bombY) {
     createExplosion(bombX, bombY);
     activeBombs--;
   }, 2000);
+}
+
+// --- Fonction modale ---
+
+// Cacher la modale au chargement et ajouter listener bouton "Play Again"
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("gameModal");
+  if (modal) {
+    modal.classList.add("hidden"); // Assure que la modale est cachée au départ
+    const btn = document.getElementById("modalButton");
+    btn.addEventListener("click", () => {
+      location.reload();
+    });
+  }
+});
+
+function showGameModal(message) {
+  const modal = document.getElementById("gameModal");
+  modal.querySelector("#modalTitle").textContent = message;
+  modal.classList.remove("hidden");
 }
 
 // --- Explosion ---
@@ -126,8 +144,7 @@ function createExplosion(centerX, centerY) {
       }
 
       if (x === targetX && y === targetY) {
-        alert("You Lose!");
-        location.reload();
+        showGameModal("You Lose!");
       }
 
       enemies.forEach((enemy, index) => {
@@ -136,8 +153,7 @@ function createExplosion(centerX, centerY) {
           enemies.splice(index, 1);
           enemyCount--;
           if (enemyCount === 0) {
-            alert("You Win!");
-            location.reload();
+            showGameModal("You Win!");
           }
         }
       });
