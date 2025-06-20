@@ -4,7 +4,7 @@
 }
 
 body {
-    background: white;
+    background: url(images/genshin_impact_background.jpeg);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,13 +18,16 @@ body {
     font-family: "Ceviche One", system-ui;
     font-size: 64px;
     text-align: center;
-    color: lightskyblue;
+    color: white;
+    text-shadow: black 1px 0 10px;
 }
 
 #game_title p {
     font-family: "Ceviche One", system-ui;
     font-size: 25px;
-    text-align: end;
+    text-align: center;
+    color: white;
+    text-shadow: black 1px 0 10px;
 }
 
 /* --- MAIN ---*/
@@ -40,9 +43,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 400px;
-    gap: 40px;
+    justify-content: flex-end;
+    width: 500px;
+    height: 80vh;
 }
 
 /* --- PLAYER CARACTER CHOICE --- */
@@ -50,23 +53,25 @@ main {
 #player_caracter_choice {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     justify-content: center;
     align-items: center;
-    border: 3px solid lightskyblue;
-    width: 250px;
+    border: 2px solid white;
+    border-radius: 10px;
     padding: 25px;
+    background-color: rgba(255, 255, 255, 0.413);
 }
 
 #player_caracter_choice p {
     font-family: "Ceviche One", system-ui;
     font-size: 30px;
+    color: white;
+    text-shadow: black 1px 0 10px;
 }
 
 #player_caracter_choice_list {
     list-style: none;
     display: flex;
-    flex-direction: column;
     gap: 15px;
     padding: 0;
 }
@@ -76,6 +81,14 @@ main {
     height: 70px;
     position: relative;
     cursor: pointer;
+    background-color: white;
+    box-shadow: black 3px 3px 5px;
+    border: 3px solid transparent;
+    border-radius: 5px;
+}
+
+#player_caracter_choice_list button:hover {
+    border-color: lightseagreen;
 }
 
 #player_caracter_choice_list button > img {
@@ -90,7 +103,8 @@ main {
 #playground {
     width: 735px;
     height: 735px;
-    border: 10px solid skyblue;
+    border: 3px solid white;
+    border-radius: 5px;
     display: grid;
     margin: 0 auto;
     grid-template-columns: repeat(21, 34px);
@@ -104,12 +118,16 @@ main {
 .cell {
   width: 34px;
   height: 34px;
-  background-color: rgb(167, 167, 167); /* sol */
+  background-color: rgb(252, 252, 252); /* sol */
   align-items: center;
 }
 
 .wall {
-  background-color: #232323; /* murs solides */
+  background-image: url('images/mur_fixe.webp');
+  width: 34px;
+  height: 34px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #player {
@@ -131,34 +149,47 @@ main {
     position: absolute;
     width: 34px;
     height: 34px;
-    background-color: red; /* ou une image si tu préfères */
-    border-radius: 50%;
-    z-index: 12;
-}
-
-.explosion {
+    background-color: transparent;
+    background-image: url('images/bomb.png');
+    background-size: cover;
+    z-index: 5;
+  }
+  
+  .explosion {
     position: absolute;
     width: 34px;
     height: 34px;
-    background-color: rgb(255, 106, 0);
-    border-radius: 4px;
-    opacity: 0.8;
-    z-index: 11;
-    animation: explode 0.5s ease-out;
+    background-color: yellow;
+    opacity: 0.7;
+    z-index: 4;
+    animation: boom 0.5s;
   }
   
-  @keyframes explode {
-    0% {
-      transform: scale(0.5);
-      opacity: 0.4;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0;
-    }
+  @keyframes boom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  
+  .exploded {
+    background-color: black !important;
+  }  
+  
+  .soft-wall {
+    background-image: url('images/mur_random.webp'); 
+    width: 34px;
+    height: 34px;
+    background-size: contain;
+    background-repeat: no-repeat;/
+  }
+
+  .enemy {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background-color: transparent;
+    z-index: 5;
+    background-image: url("images/slime.png");
+    background-size: cover;
   }
   
